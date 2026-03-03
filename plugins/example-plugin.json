@@ -1,0 +1,12 @@
+{
+  "id": "example-plugin",
+  "name": "Example Plugin",
+  "description": "An example plugin for Little Tree Clock.",
+  "version": "1.0.0",
+  "author": "Little Tree",
+  "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock-Resources/raw/main/plugins/files/example-plugin-1.0.0.py",
+  "homepage": "https://github.com/shu-shu-1/Little-Tree-Clock-Resources/blob/main/plugins/example-plugin.json",
+  "tags": ["example"],
+  "updated_at": "2026-03-03",
+  "min_app_version": "1.0.0"
+}
