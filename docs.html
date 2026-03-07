@@ -157,10 +157,44 @@
                         <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-medium rounded-full">GET</span>
                         <h2 class="text-2xl font-bold text-white">更新 API</h2>
                     </div>
-                    <p class="text-gray-400 mb-4">返回最新版本的元数据（不含安装包本体）。</p>
+                    <p class="text-gray-400 mb-4">返回指定频道最新版本的元数据，支持多个更新频道。</p>
                     
-                    <div class="bg-darker rounded-xl p-4 border border-gray-700 mb-4">
-                        <code class="text-gray-300">/update/latest.json</code>
+                    <!-- Channels -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+                        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                                <span class="text-emerald-400 font-semibold">stable</span>
+                                <span class="text-xs text-gray-500 ml-auto">推荐</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">稳定版，经过充分测试</p>
+                        </div>
+                        <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                                <span class="text-yellow-400 font-semibold">beta</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">测试版，新功能预览</p>
+                        </div>
+                        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2 h-2 bg-red-400 rounded-full"></span>
+                                <span class="text-red-400 font-semibold">dev</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">开发版，仅供开发者</p>
+                        </div>
+                    </div>
+
+                    <!-- Endpoints -->
+                    <div class="space-y-3 mb-4">
+                        <div class="bg-darker rounded-xl p-4 border border-gray-700">
+                            <code class="text-gray-300">/update/latest.json</code>
+                            <span class="text-gray-500 text-sm ml-2">→ 默认指向 stable 频道</span>
+                        </div>
+                        <div class="bg-darker rounded-xl p-4 border border-gray-700">
+                            <code class="text-gray-300">/update/{channel}.json</code>
+                            <span class="text-gray-500 text-sm ml-2">→ channel: stable / beta / dev</span>
+                        </div>
                     </div>
 
                     <div class="mb-4">
@@ -168,10 +202,11 @@
                         <div class="code-block">
                             <button class="copy-btn text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded transition" onclick="copyCode(this)">复制</button>
                             <pre><code class="language-json">{
+  "channel": "stable",
   "version": "1.0.0",
   "release_date": "2026-03-03",
   "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.0.0/LittleTreeClock-1.0.0.zip",
-  "changelog": "## 新增功能\n\n- 新增插件商店\n- 新增自动更新功能\n\n## 改进\n\n- 优化界面显示效果",
+  "changelog": "## 新增功能\n\n- 新增插件商店\n- 新增自动更新功能",
   "min_version": "0.1.0",
   "mandatory": false
 }</code></pre>
@@ -188,6 +223,7 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-700">
+                                <tr><td class="py-3 px-4"><code class="text-primary">channel</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">更新频道: stable / beta / dev</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">最新版本号</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">release_date</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">发布日期 (YYYY-MM-DD)</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">download_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">安装包下载地址</td></tr>

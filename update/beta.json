@@ -1,0 +1,9 @@
+{
+  "channel": "beta",
+  "version": "1.1.0-beta.1",
+  "release_date": "2026-03-05",
+  "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.1.0-beta.1/LittleTreeClock-1.1.0-beta.1.zip",
+  "changelog": "## 新增功能\n\n- 新增主题切换功能\n- 新增多语言支持\n\n## 改进\n\n- 优化性能表现\n\n## 注意\n\n- 此为测试版本，可能存在不稳定因素",
+  "min_version": "1.0.0",
+  "mandatory": false
+}

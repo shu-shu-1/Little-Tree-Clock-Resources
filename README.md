@@ -33,7 +33,12 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
   "base_url": "https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/",
   "endpoints": {
     "index": "index.json",
-    "update": "update/latest.json",
+    "update": {
+      "latest": "update/latest.json",
+      "stable": "update/stable.json",
+      "beta": "update/beta.json",
+      "dev": "update/dev.json"
+    },
     "plugins": "plugins/index.json",
     "announcements": "announcements/index.json"
   }
@@ -53,16 +58,35 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 
 ## 1. 更新 API / Update API
 
+支持多频道更新：`stable`（稳定版）、`beta`（测试版）、`dev`（开发版）。
+
+> Supports multiple update channels: `stable`, `beta`, `dev`.
+
 ### GET `update/latest.json`
 
-返回最新版本的元数据（不含安装包本体）。
+默认端点，指向 `stable` 频道。
 
-> Returns metadata for the latest release (no binary included).
+> Default endpoint, points to `stable` channel.
+
+### GET `update/{channel}.json`
+
+返回指定频道的最新版本元数据。`channel` 可选值：`stable`、`beta`、`dev`。
+
+> Returns metadata for the latest release of specified channel. Channel options: `stable`, `beta`, `dev`.
+
+**频道说明 / Channel Description:**
+
+| 频道 / Channel | 说明 / Description                           |
+| -------------- | -------------------------------------------- |
+| `stable`       | 稳定版，经过充分测试 / Stable, fully tested  |
+| `beta`         | 测试版，新功能预览 / Beta, preview features  |
+| `dev`          | 开发版，仅供开发者 / Dev, for developers only |
 
 **示例响应 / Example Response:**
 
 ```json
 {
+  "channel": "stable",
   "version": "1.0.0",
   "release_date": "2026-03-03",
   "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.0.0/LittleTreeClock-1.0.0.zip",
@@ -76,6 +100,7 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 
 | 字段 / Field    | 类型 / Type | 说明 / Description                                   |
 | --------------- | ----------- | ---------------------------------------------------- |
+| `channel`       | string      | 更新频道: stable / beta / dev                        |
 | `version`       | string      | 最新版本号 / Latest version number                   |
 | `release_date`  | string      | 发布日期 (YYYY-MM-DD) / Release date                 |
 | `download_url`  | string      | 安装包下载地址 / Download URL for the installer      |
@@ -179,9 +204,19 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 
 ### 发布新版本 / Releasing a new version
 
-编辑 `update/latest.json`，更新 `version`、`release_date`、`download_url` 等字段，并将新版安装包上传至 Releases。
+1. 根据版本类型，编辑对应的频道文件：
+   - 稳定版：`update/stable.json`（同时更新 `update/latest.json`）
+   - 测试版：`update/beta.json`
+   - 开发版：`update/dev.json`
+2. 更新 `version`、`release_date`、`download_url`、`changelog` 等字段。
+3. 将新版安装包上传至 GitHub Releases。
 
-> Edit `update/latest.json`, update the `version`, `release_date`, and `download_url` fields, then upload the new installer to GitHub Releases.
+> 1. Edit the corresponding channel file based on version type:
+>    - Stable: `update/stable.json` (also update `update/latest.json`)
+>    - Beta: `update/beta.json`
+>    - Dev: `update/dev.json`
+> 2. Update `version`, `release_date`, `download_url`, `changelog` fields.
+> 3. Upload the new installer to GitHub Releases.
 
 ### 上架新插件 / Publishing a new plugin
 
@@ -212,7 +247,10 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 ├── README.md                        # 本文档 / This document
 ├── index.json                       # API 根索引 / API root index
 ├── update/
-│   └── latest.json                  # 最新版本元数据 / Latest version metadata
+│   ├── latest.json                  # 默认更新（指向 stable）/ Default update (points to stable)
+│   ├── stable.json                  # 稳定版元数据 / Stable version metadata
+│   ├── beta.json                    # 测试版元数据 / Beta version metadata
+│   └── dev.json                     # 开发版元数据 / Dev version metadata
 ├── plugins/
 │   ├── index.json                   # 插件列表 / Plugin listing
 │   ├── example-plugin.json          # 示例插件元数据 / Example plugin metadata

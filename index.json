@@ -4,7 +4,12 @@
   "base_url": "https://clock.api.zsxiaoshu.cn/",
   "endpoints": {
     "index": "index.json",
-    "update": "update/latest.json",
+    "update": {
+      "latest": "update/latest.json",
+      "stable": "update/stable.json",
+      "beta": "update/beta.json",
+      "dev": "update/dev.json"
+    },
     "plugins": "plugins/index.json",
     "announcements": "announcements/index.json"
   }
