@@ -1,6 +1,7 @@
 {
   "announcements": [
     {
+      "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
       "id": "1",
       "title": "欢迎使用小树时钟！",
       "content": "小树时钟现已支持插件商店与自动更新功能，欢迎体验！\n\nWelcome to Little Tree Clock! The app now supports a plugin store and automatic updates.",

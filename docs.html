@@ -171,7 +171,7 @@
   "version": "1.0.0",
   "release_date": "2026-03-03",
   "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.0.0/LittleTreeClock-1.0.0.zip",
-  "changelog_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/tag/v1.0.0",
+  "changelog": "## 新增功能\n\n- 新增插件商店\n- 新增自动更新功能\n\n## 改进\n\n- 优化界面显示效果",
   "min_version": "0.1.0",
   "mandatory": false
 }</code></pre>
@@ -191,7 +191,7 @@
                                 <tr><td class="py-3 px-4"><code class="text-primary">version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">最新版本号</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">release_date</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">发布日期 (YYYY-MM-DD)</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">download_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">安装包下载地址</td></tr>
-                                <tr><td class="py-3 px-4"><code class="text-primary">changelog_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">更新日志页面</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">changelog</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">更新日志 (Markdown 格式)</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">min_version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">支持自动升级的最低版本</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">mandatory</code></td><td class="py-3 px-4 text-gray-400">boolean</td><td class="py-3 px-4 text-gray-300">是否为强制更新</td></tr>
                             </tbody>
@@ -302,6 +302,7 @@
                             <pre><code class="language-json">{
   "announcements": [
     {
+      "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
       "id": "1",
       "title": "欢迎使用小树时钟！",
       "content": "小树时钟现已支持插件商店与自动更新功能，欢迎体验！",
@@ -323,7 +324,8 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-700">
-                                <tr><td class="py-3 px-4"><code class="text-primary">id</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告唯一 ID</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">uuid</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告唯一 UUID</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">id</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告序号 ID（已弃用，建议使用 uuid）</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">title</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告标题</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">content</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告正文（完整内容）</td></tr>
                                 <tr><td class="py-3 px-4"><code class="text-primary">date</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">发布日期 (YYYY-MM-DD)</td></tr>

@@ -66,7 +66,7 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
   "version": "1.0.0",
   "release_date": "2026-03-03",
   "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.0.0/LittleTreeClock-1.0.0.zip",
-  "changelog_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/tag/v1.0.0",
+  "changelog": "## 新增功能\n\n- 新增插件商店\n- 新增自动更新功能\n\n## 改进\n\n- 优化界面显示效果",
   "min_version": "0.1.0",
   "mandatory": false
 }
@@ -79,7 +79,7 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 | `version`       | string      | 最新版本号 / Latest version number                   |
 | `release_date`  | string      | 发布日期 (YYYY-MM-DD) / Release date                 |
 | `download_url`  | string      | 安装包下载地址 / Download URL for the installer      |
-| `changelog_url` | string      | 更新日志页面 / Changelog page URL                    |
+| `changelog`     | string      | 更新日志 (Markdown 格式) / Changelog in Markdown     |
 | `min_version`   | string      | 支持自动升级的最低版本 / Minimum upgradeable version |
 | `mandatory`     | boolean     | 是否为强制更新 / Whether the update is mandatory     |
 
@@ -151,6 +151,7 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 {
   "announcements": [
     {
+      "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
       "id": "1",
       "title": "欢迎使用小树时钟！",
       "content": "小树时钟现已支持插件商店与自动更新功能，欢迎体验！\n\nWelcome to Little Tree Clock! The app now supports a plugin store and automatic updates.",
@@ -165,8 +166,9 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 
 | 字段 / Field | 类型 / Type | 说明 / Description                                              |
 | ------------ | ----------- | --------------------------------------------------------------- |
-| `id`         | string      | 公告唯一 ID / Unique announcement ID                            |
-| `title`      | string      | 公告标题 / Announcement title                                   |
+| `uuid`         | string      | 公告唯一 UUID / Unique announcement UUID                 |
+| `id`           | string      | 公告序号 ID（已弃用，建议使用 uuid）/ Announcement ID (deprecated, use uuid) |
+| `title`        | string      | 公告标题 / Announcement title                                   |
 | `content`    | string      | 公告正文（完整内容）/ Full announcement body                    |
 | `date`       | string      | 发布日期 (YYYY-MM-DD) / Publication date                        |
 | `level`      | string      | 级别：`info` / `warning` / `error` / Severity level            |
