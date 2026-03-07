@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到 | Little Tree Clock API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981',
+                        dark: '#1a1a2e',
+                        darker: '#16213e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-200 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-darker/95 backdrop-blur border-b border-gray-700">
+        <div class="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
+            <a href="/" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-emerald-400 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white">小树时钟 API</h1>
+                    <p class="text-xs text-gray-400">Little Tree Clock API</p>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4">
+        <div class="text-center">
+            <!-- 404 Animation -->
+            <div class="float-animation mb-8">
+                <div class="text-[180px] md:text-[240px] font-bold gradient-text leading-none select-none">
+                    404
+                </div>
+            </div>
+
+            <!-- Message -->
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                页面未找到
+            </h2>
+            <p class="text-gray-400 text-lg mb-2">
+                Page Not Found
+            </p>
+            <p class="text-gray-500 max-w-md mx-auto mb-8">
+                您访问的 API 端点不存在，请检查 URL 是否正确。
+                <br>
+                The API endpoint you're looking for doesn't exist.
+            </p>
+
+            <!-- Available Endpoints -->
+            <div class="bg-darker rounded-xl p-6 border border-gray-700 max-w-md mx-auto mb-8">
+                <h3 class="text-sm font-semibold text-gray-300 mb-4 uppercase tracking-wider">可用的端点 / Available Endpoints</h3>
+                <div class="space-y-2 text-left">
+                    <a href="/index.json" class="flex items-center gap-2 text-gray-400 hover:text-primary transition group">
+                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded">GET</span>
+                        <code class="text-sm group-hover:text-primary">/index.json</code>
+                    </a>
+                    <a href="/update/latest.json" class="flex items-center gap-2 text-gray-400 hover:text-primary transition group">
+                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded">GET</span>
+                        <code class="text-sm group-hover:text-primary">/update/latest.json</code>
+                    </a>
+                    <a href="/plugins/index.json" class="flex items-center gap-2 text-gray-400 hover:text-primary transition group">
+                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded">GET</span>
+                        <code class="text-sm group-hover:text-primary">/plugins/index.json</code>
+                    </a>
+                    <a href="/announcements/index.json" class="flex items-center gap-2 text-gray-400 hover:text-primary transition group">
+                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded">GET</span>
+                        <code class="text-sm group-hover:text-primary">/announcements/index.json</code>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-emerald-600 text-white font-medium rounded-lg transition shadow-lg shadow-primary/25">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                返回首页 / Back to Home
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 py-4">
+        <p class="text-center text-gray-500 text-sm">
+            <a href="https://github.com/shu-shu-1/Little-Tree-Clock-Resources" class="text-primary hover:underline">GitHub</a>
+            · Little Tree Clock API
+        </p>
+    </footer>
+</body>
+</html>
