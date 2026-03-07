@@ -7,6 +7,7 @@
   "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock-Resources/raw/main/plugins/files/example-plugin-1.0.0.py",
   "homepage": "https://github.com/shu-shu-1/Little-Tree-Clock-Resources/blob/main/plugins/example-plugin.json",
   "tags": ["example"],
+  "supported_os": ["windows", "macos", "linux"],
   "updated_at": "2026-03-03",
   "min_app_version": "1.0.0"
 }

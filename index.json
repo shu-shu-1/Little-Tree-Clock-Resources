@@ -1,0 +1,11 @@
+{
+  "name": "Little Tree Clock Resources API",
+  "version": "1",
+  "base_url": "https://clock.api.zsxiaoshu.cn/",
+  "endpoints": {
+    "index": "index.json",
+    "update": "update/latest.json",
+    "plugins": "plugins/index.json",
+    "announcements": "announcements/index.json"
+  }
+}

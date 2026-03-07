@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小树时钟 API 文档 | Little Tree Clock API Docs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981',
+                        dark: '#1a1a2e',
+                        darker: '#16213e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 2px; }
+        .code-block { position: relative; }
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .code-block:hover .copy-btn { opacity: 1; }
+        pre code { border-radius: 8px; }
+        .nav-link.active {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, transparent 100%);
+            border-left: 3px solid #10b981;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-200">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-darker/95 backdrop-blur border-b border-gray-700 z-50">
+        <div class="flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-emerald-400 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white">小树时钟 API</h1>
+                    <p class="text-xs text-gray-400">Little Tree Clock API Documentation</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full font-medium">v1</span>
+                <a href="https://github.com/shu-shu-1/Little-Tree-Clock-Resources" target="_blank" class="text-gray-400 hover:text-white transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <aside class="sidebar fixed left-0 top-16 bottom-0 w-64 bg-darker border-r border-gray-700 overflow-y-auto">
+            <nav class="p-4 space-y-2">
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 px-3">概览 / Overview</div>
+                <a href="#overview" class="nav-link block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition">简介</a>
+                
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6 px-3">API 端点 / Endpoints</div>
+                <a href="#root-index" class="nav-link block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition">根索引</a>
+                <a href="#update-api" class="nav-link block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition">更新 API</a>
+                <a href="#plugin-api" class="nav-link block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition">插件商店 API</a>
+                <a href="#announcement-api" class="nav-link block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition">公告 API</a>
+                
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6 px-3">维护指南 / Maintenance</div>
+                <a href="#maintenance" class="nav-link block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition">如何维护</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 flex-1 p-8">
+            <div class="max-w-4xl">
+                <!-- Overview -->
+                <section id="overview" class="mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-4">小树时钟 API 文档</h2>
+                    <p class="text-gray-400 mb-6">小树时钟静态 API 文档。所有端点均返回 JSON 格式数据。</p>
+                    
+                    <div class="bg-darker rounded-xl p-6 border border-gray-700">
+                        <h3 class="text-lg font-semibold text-white mb-3">Base URL</h3>
+                        <div class="code-block bg-gray-900 rounded-lg p-4">
+                            <button class="copy-btn text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded transition" onclick="copyCode(this)">复制</button>
+                            <code class="text-primary">https://clock.api.zsxiaoshu.cn/</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Root Index -->
+                <section id="root-index" class="mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-medium rounded-full">GET</span>
+                        <h2 class="text-2xl font-bold text-white">根索引</h2>
+                    </div>
+                    <p class="text-gray-400 mb-4">返回 API 的总体索引，包含各端点路径。</p>
+                    
+                    <div class="bg-darker rounded-xl p-4 border border-gray-700 mb-4">
+                        <code class="text-gray-300">/index.json</code>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-300 mb-2">响应示例 / Response Example</h4>
+                        <div class="code-block">
+                            <button class="copy-btn text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded transition" onclick="copyCode(this)">复制</button>
+                            <pre><code class="language-json">{
+  "name": "Little Tree Clock Resources API",
+  "version": "1",
+  "base_url": "https://clock.api.zsxiaoshu.cn/",
+  "endpoints": {
+    "index": "index.json",
+    "update": "update/latest.json",
+    "plugins": "plugins/index.json",
+    "announcements": "announcements/index.json"
+  }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">字段</th>
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">类型</th>
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">说明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700">
+                                <tr><td class="py-3 px-4"><code class="text-primary">name</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">API 名称</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">API 版本</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">base_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">所有端点的基础 URL</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">endpoints</code></td><td class="py-3 px-4 text-gray-400">object</td><td class="py-3 px-4 text-gray-300">端点路径映射</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Update API -->
+                <section id="update-api" class="mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-medium rounded-full">GET</span>
+                        <h2 class="text-2xl font-bold text-white">更新 API</h2>
+                    </div>
+                    <p class="text-gray-400 mb-4">返回最新版本的元数据（不含安装包本体）。</p>
+                    
+                    <div class="bg-darker rounded-xl p-4 border border-gray-700 mb-4">
+                        <code class="text-gray-300">/update/latest.json</code>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-300 mb-2">响应示例 / Response Example</h4>
+                        <div class="code-block">
+                            <button class="copy-btn text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded transition" onclick="copyCode(this)">复制</button>
+                            <pre><code class="language-json">{
+  "version": "1.0.0",
+  "release_date": "2026-03-03",
+  "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.0.0/LittleTreeClock-1.0.0.zip",
+  "changelog_url": "https://github.com/shu-shu-1/Little-Tree-Clock/releases/tag/v1.0.0",
+  "min_version": "0.1.0",
+  "mandatory": false
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">字段</th>
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">类型</th>
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">说明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700">
+                                <tr><td class="py-3 px-4"><code class="text-primary">version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">最新版本号</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">release_date</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">发布日期 (YYYY-MM-DD)</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">download_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">安装包下载地址</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">changelog_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">更新日志页面</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">min_version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">支持自动升级的最低版本</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">mandatory</code></td><td class="py-3 px-4 text-gray-400">boolean</td><td class="py-3 px-4 text-gray-300">是否为强制更新</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Plugin Store API -->
+                <section id="plugin-api" class="mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-medium rounded-full">GET</span>
+                        <h2 class="text-2xl font-bold text-white">插件商店 API</h2>
+                    </div>
+                    
+                    <!-- Plugin Index -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-white mb-3">获取插件列表</h3>
+                        <p class="text-gray-400 mb-4">返回所有插件的元数据列表（不含插件源码本体）。</p>
+                        
+                        <div class="bg-darker rounded-xl p-4 border border-gray-700 mb-4">
+                            <code class="text-gray-300">/plugins/index.json</code>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-300 mb-2">响应示例 / Response Example</h4>
+                            <div class="code-block">
+                                <button class="copy-btn text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded transition" onclick="copyCode(this)">复制</button>
+                                <pre><code class="language-json">{
+  "plugins": [
+    {
+      "id": "example-plugin",
+      "file": "example-plugin.json"
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="text-left py-3 px-4 text-gray-300 font-semibold">字段</th>
+                                        <th class="text-left py-3 px-4 text-gray-300 font-semibold">类型</th>
+                                        <th class="text-left py-3 px-4 text-gray-300 font-semibold">说明</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-700">
+                                    <tr><td class="py-3 px-4"><code class="text-primary">id</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件唯一标识符</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">file</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件详情 JSON 的文件名</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Plugin Detail -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-3">获取插件详情</h3>
+                        <p class="text-gray-400 mb-4">返回指定插件的详细元数据。</p>
+                        
+                        <div class="bg-darker rounded-xl p-4 border border-gray-700 mb-4">
+                            <code class="text-gray-300">/plugins/{id}.json</code>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="text-left py-3 px-4 text-gray-300 font-semibold">字段</th>
+                                        <th class="text-left py-3 px-4 text-gray-300 font-semibold">类型</th>
+                                        <th class="text-left py-3 px-4 text-gray-300 font-semibold">说明</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-700">
+                                    <tr><td class="py-3 px-4"><code class="text-primary">id</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件唯一标识符</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">name</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件名称</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">description</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件简介</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件版本号</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">author</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">作者</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">download_url</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">.py 文件下载地址</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">homepage</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">插件主页或详情页</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">tags</code></td><td class="py-3 px-4 text-gray-400">array[string]</td><td class="py-3 px-4 text-gray-300">标签列表</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">supported_os</code></td><td class="py-3 px-4 text-gray-400">array[string]</td><td class="py-3 px-4 text-gray-300">支持的操作系统 (windows/macos/linux)</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">updated_at</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">最后更新日期</td></tr>
+                                    <tr><td class="py-3 px-4"><code class="text-primary">min_app_version</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">所需最低应用版本</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Announcement API -->
+                <section id="announcement-api" class="mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-medium rounded-full">GET</span>
+                        <h2 class="text-2xl font-bold text-white">公告 API</h2>
+                    </div>
+                    <p class="text-gray-400 mb-4">返回所有公告的完整内容。</p>
+                    
+                    <div class="bg-darker rounded-xl p-4 border border-gray-700 mb-4">
+                        <code class="text-gray-300">/announcements/index.json</code>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-300 mb-2">响应示例 / Response Example</h4>
+                        <div class="code-block">
+                            <button class="copy-btn text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded transition" onclick="copyCode(this)">复制</button>
+                            <pre><code class="language-json">{
+  "announcements": [
+    {
+      "id": "1",
+      "title": "欢迎使用小树时钟！",
+      "content": "小树时钟现已支持插件商店与自动更新功能，欢迎体验！",
+      "date": "2026-03-03",
+      "level": "info"
+    }
+  ]
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">字段</th>
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">类型</th>
+                                    <th class="text-left py-3 px-4 text-gray-300 font-semibold">说明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700">
+                                <tr><td class="py-3 px-4"><code class="text-primary">id</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告唯一 ID</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">title</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告标题</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">content</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">公告正文（完整内容）</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">date</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">发布日期 (YYYY-MM-DD)</td></tr>
+                                <tr><td class="py-3 px-4"><code class="text-primary">level</code></td><td class="py-3 px-4 text-gray-400">string</td><td class="py-3 px-4 text-gray-300">级别: info / warning / error</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Maintenance -->
+                <section id="maintenance" class="mb-12">
+                    <h2 class="text-2xl font-bold text-white mb-4">如何维护</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Release -->
+                        <div class="bg-darker rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <span class="w-6 h-6 bg-primary/20 text-primary rounded flex items-center justify-center text-sm">1</span>
+                                发布新版本
+                            </h3>
+                            <p class="text-gray-400">编辑 <code class="text-primary">update/latest.json</code>，更新 <code class="text-gray-300">version</code>、<code class="text-gray-300">release_date</code>、<code class="text-gray-300">download_url</code> 等字段，并将新版安装包上传至 Releases。</p>
+                        </div>
+
+                        <!-- Plugin -->
+                        <div class="bg-darker rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <span class="w-6 h-6 bg-primary/20 text-primary rounded flex items-center justify-center text-sm">2</span>
+                                上架新插件
+                            </h3>
+                            <ol class="text-gray-400 space-y-2 list-decimal list-inside">
+                                <li>在 <code class="text-primary">plugins/</code> 目录下创建 <code class="text-gray-300">{id}.json</code>，填写插件元数据</li>
+                                <li>将对应 <code class="text-gray-300">.py</code> 文件上传至 <code class="text-primary">plugins/files/</code> 目录</li>
+                                <li>将该插件条目追加到 <code class="text-primary">plugins/index.json</code> 的 <code class="text-gray-300">plugins</code> 数组中</li>
+                            </ol>
+                        </div>
+
+                        <!-- Announcement -->
+                        <div class="bg-darker rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <span class="w-6 h-6 bg-primary/20 text-primary rounded flex items-center justify-center text-sm">3</span>
+                                发布公告
+                            </h3>
+                            <p class="text-gray-400">在 <code class="text-primary">announcements/index.json</code> 的 <code class="text-gray-300">announcements</code> 数组中追加一条新记录，<code class="text-gray-300">id</code> 递增，<code class="text-gray-300">level</code> 可选 <code class="text-yellow-400">info</code>、<code class="text-orange-400">warning</code> 或 <code class="text-red-400">error</code>。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="border-t border-gray-700 pt-8 mt-12">
+                    <p class="text-center text-gray-500 text-sm">
+                        Made with ❤️ for Little Tree Clock · 
+                        <a href="https://github.com/shu-shu-1/Little-Tree-Clock-Resources" class="text-primary hover:underline">GitHub</a>
+                    </p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.parentElement.querySelector('code');
+            const text = codeBlock.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = '已复制!';
+                button.classList.add('bg-primary/20', 'text-primary');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('bg-primary/20', 'text-primary');
+                }, 2000);
+            });
+        }
+
+        // Active nav link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+    </script>
+</body>
+</html>
