@@ -4,9 +4,17 @@
       "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
       "id": "1",
       "title": "欢迎使用小树时钟！",
-      "content": "小树时钟现已支持插件商店与自动更新功能，欢迎体验！\n\nWelcome to Little Tree Clock! The app now supports a plugin store and automatic updates.",
+      "content": "这是一个测试公告\n\nWelcome to Little Tree Clock! This is a test announcement.",
       "date": "2026-03-03",
       "level": "info"
+    },
+    {
+      "uuid": "f1e2d3c4-b5a6-7890-cdef-1234567890ab",
+      "id": "2",
+      "title": "系统维护通知（测试）",
+      "content": "我们将于2026年4月1日进行系统维护，届时服务可能会暂时不可用。\n\nSystem Maintenance Notice: We will be performing system maintenance on March 10, 2026. The service may be temporarily unavailable during this time.",
+      "date": "2026-03-05",
+      "level": "warning"
     }
   ]
 }
