@@ -4,6 +4,7 @@
   "description": "An example plugin for Little Tree Clock.",
   "version": "1.0.0",
   "author": "Little Tree",
+  "icon": "https://example.com/icon.png",
   "download_url": "https://github.com/shu-shu-1/Little-Tree-Clock-Resources/raw/main/plugins/files/example-plugin-1.0.0.py",
   "homepage": "https://github.com/shu-shu-1/Little-Tree-Clock-Resources/blob/main/plugins/example-plugin.json",
   "tags": ["example"],

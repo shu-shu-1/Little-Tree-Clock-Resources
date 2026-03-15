@@ -153,6 +153,7 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 | `description`      | string        | 插件简介 / Short description                               |
 | `version`          | string        | 插件版本号 / Plugin version                                |
 | `author`           | string        | 作者 / Author name                                         |
+| `icon`             | string        | 插件图标 (URL 或 Base64) / Plugin icon (URL or Base64)     |
 | `download_url`     | string        | `.py` 文件下载地址 / URL to download the `.py` plugin file |
 | `homepage`         | string        | 插件主页或详情页 / Plugin homepage or detail page          |
 | `tags`             | array[string] | 标签列表 / Tag list                                        |
