@@ -1,0 +1,24 @@
+{
+  "id": "usb_auth_login",
+  "name": "U盘登录",
+  "name_i18n": {
+    "zh-CN": "U盘登录",
+    "en-US": "USB Key Login"
+  },
+  "description": "绑定U盘序列号并作为权限系统登录方式",
+  "description_i18n": {
+    "zh-CN": "绑定U盘序列号并作为权限系统登录方式",
+    "en-US": "Bind USB serials and use them as a permission auth method"
+  },
+  "version": "1.1.0",
+  "author": "Little Tree Clock",
+  "icon": "https://zsxiaoshu.cn/images/clock-icon.png",
+  "download_url": "https://fastly.jsdelivr.net/gh/shu-shu-1/Little-Tree-Clock@master/plugins_ext/usb_auth_login-1.1.0.ltcplugin",
+  "homepage": "https://clock.zsxiaoshu.cn/",
+  "tags": ["authentication"],
+  "plugin_type": "feature",
+  "permissions": [],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "1.0.0",
+  "updated_at": "2026-05-23"
+}

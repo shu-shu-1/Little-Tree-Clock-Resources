@@ -142,24 +142,73 @@ https://raw.githubusercontent.com/shu-shu-1/Little-Tree-Clock-Resources/main/
 
 返回指定插件的详细元数据。
 
-> Returns detailed metadata for a specific plugin.
+**响应格式：**
 
-**字段说明 / Field Description:**
+```json
+{
+  "id": "my_plugin",
+  "name": "我的插件",
+  "name_i18n": {
+    "zh-CN": "我的插件",
+    "en-US": "My Plugin"
+  },
+  "description": "一句话描述插件功能",
+  "description_i18n": {
+    "zh-CN": "一句话描述插件功能",
+    "en-US": "One-line plugin description"
+  },
+  "version": "1.0.0",
+  "author": "作者名",
+  "icon": "https://example.com/icon.png",
+  "download_url": "https://example.com/my_plugin-1.0.0.ltcplugin",
+  "homepage": "https://github.com/yourname/my_plugin",
+  "tags": ["notification", "alarm"],
+  "plugin_type": "feature",
+  "permissions": ["network", "install_pkg"],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "0.1.0",
+  "updated_at": "2024-01-01"
+}
+```
 
-| 字段 / Field       | 类型 / Type   | 说明 / Description                                         |
-| ------------------ | ------------- | ---------------------------------------------------------- |
-| `id`               | string        | 插件唯一标识符 / Unique plugin identifier                  |
-| `name`             | string        | 插件名称 / Plugin display name                             |
-| `description`      | string        | 插件简介 / Short description                               |
-| `version`          | string        | 插件版本号 / Plugin version                                |
-| `author`           | string        | 作者 / Author name                                         |
-| `icon`             | string        | 插件图标 (URL 或 Base64) / Plugin icon (URL or Base64)     |
-| `download_url`     | string        | `.py` 文件下载地址 / URL to download the `.py` plugin file |
-| `homepage`         | string        | 插件主页或详情页 / Plugin homepage or detail page          |
-| `tags`             | array[string] | 标签列表 / Tag list                                        |
-| `supported_os`     | array[string] | 支持的操作系统列表，可选值：`windows` `macos` `linux` / Supported OS list: `windows`, `macos`, `linux` |
-| `updated_at`       | string        | 最后更新日期 (YYYY-MM-DD) / Last updated date              |
-| `min_app_version`  | string        | 所需最低应用版本 / Minimum required app version            |
+---
+
+## 字段说明
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `id` | string | ✅ | 全局唯一标识符，`snake_case`，与 `plugin.json` 中 `id` 一致 |
+| `name` | string \| object | ✅* | 插件显示名称；支持字符串或多语言对象（见 [i18n](#多语言支持i18n)） |
+| `name_i18n` | object | | 名称多语言映射（可选），与 `name` 合并解析 |
+| `description` | string \| object | | 插件简介；支持字符串或多语言对象 |
+| `description_i18n` | object | | 描述多语言映射（可选），与 `description` 合并解析 |
+| `version` | string | | 语义化版本号（如 `"1.0.0"`） |
+| `author` | string | | 作者名或邮箱 |
+| `icon` | string | | 插件图标 URL 或 Base64（`data:image/...;base64,...`） |
+| `download_url` | string | | 插件安装包下载地址（`.py` 或 `.ltcplugin`） |
+| `homepage` | string | | 插件主页或详情页 URL |
+| `tags` | array[string] | | 分类标签 |
+| `plugin_type` | string | | `"feature"`（默认）或 `"library"` |
+| `permissions` | array[string] | | 所需系统权限声明（参考 `plugin.json` 的 `permissions`） |
+| `supported_os` | array[string] | | 支持的操作系统列表，可选值：`"windows"` `"macos"` `"linux"` |
+| `min_host_version` | string | | 要求的最低宿主版本（与 `plugin.json` 中 `min_host_version` 一致） |
+| `updated_at` | string | | 最后更新日期（`YYYY-MM-DD`） |
+
+> `*` 必填规则：`name` 与 `name_i18n` 至少提供一个即可。
+
+### 字段解析优先级
+
+客户端按以下优先级解析多语言文本：
+
+1. `name` / `description` 若为 `{"zh-CN": "...", "en-US": "..."}` 形式的对象，直接按当前语言选择
+2. `name_i18n` / `description_i18n` 的值会**合并到**上述对象中（`name_i18n` 优先）
+3. 若 `name` 为纯字符串、`name_i18n` 非空，则合并为 `{"zh-CN": "原name", ...name_i18n}` 供语言选择
+4. 若均为纯字符串，直接使用
+
+### 向后兼容
+
+- `min_app_version`：旧版商店文件中使用 `min_app_version` 表示最低版本要求，客户端仍会识别该字段作为 `min_host_version` 的回退。**新文件应使用 `min_host_version`**。
+
 
 ---
 

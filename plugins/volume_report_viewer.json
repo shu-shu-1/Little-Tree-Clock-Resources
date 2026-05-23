@@ -1,0 +1,24 @@
+{
+  "id": "volume_report_viewer",
+  "name": "音量报告可视化",
+  "name_i18n": {
+    "zh-CN": "音量报告可视化",
+    "en-US": "Volume Report Viewer"
+  },
+  "description": "读取音量检测报告并在侧边栏可视化展示，支持导出图片。",
+  "description_i18n": {
+    "zh-CN": "读取音量检测报告并在侧边栏可视化展示，支持导出图片。",
+    "en-US": "Read volume detection reports and display them in the sidebar with visualization, supporting image export."
+  },
+  "version": "1.0.0",
+  "author": "Little Tree Clock",
+  "icon": "https://zsxiaoshu.cn/images/clock-icon.png",
+  "download_url": "https://fastly.jsdelivr.net/gh/shu-shu-1/Little-Tree-Clock@master/plugins_ext/volume_report_viewer-1.0.0.ltcplugin",
+  "homepage": "https://clock.zsxiaoshu.cn/",
+  "tags": ["audio", "report", "visualization"],
+  "plugin_type": "feature",
+  "permissions": [],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "1.0.0",
+  "updated_at": "2026-05-23"
+}

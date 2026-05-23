@@ -1,0 +1,24 @@
+{
+  "id": "hitokoto_widget",
+  "name": "随机一言",
+  "name_i18n": {
+    "zh-CN": "随机一言",
+    "en-US": "Random Quote"
+  },
+  "description": "在桌面显示随机一言，支持一言 API、诏预接口、自定义 API 和本地文本文件",
+  "description_i18n": {
+    "zh-CN": "在桌面显示随机一言，支持一言 API、诏预接口、自定义 API 和本地文本文件",
+    "en-US": "Display random quotes on desktop, supporting Hitokoto API, poetry API, custom API, and local text files"
+  },
+  "version": "1.2.0",
+  "author": "Little Tree Clock",
+  "icon": "https://zsxiaoshu.cn/images/clock-icon.png",
+  "download_url": "https://fastly.jsdelivr.net/gh/shu-shu-1/Little-Tree-Clock@master/plugins_ext/hitokoto_widget-1.2.0.ltcplugin",
+  "homepage": "https://clock.zsxiaoshu.cn/",
+  "tags": ["quote"],
+  "plugin_type": "feature",
+  "permissions": ["network", "fs_read", "install_pkg"],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "1.0.0",
+  "updated_at": "2026-05-23"
+}

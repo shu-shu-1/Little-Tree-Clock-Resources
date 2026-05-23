@@ -1,8 +1,36 @@
 {
   "plugins": [
     {
-      "id": "example-plugin",
-      "file": "example-plugin.json"
+      "id": "document_viewer",
+      "file": "document_viewer.json"
+    },
+    {
+      "id": "exam_panel",
+      "file": "exam_panel.json"
+    },
+    {
+      "id": "hitokoto_widget",
+      "file": "hitokoto_widget.json"
+    },
+    {
+      "id": "layout_presets",
+      "file": "layout_presets.json"
+    },
+    {
+      "id": "study_schedule",
+      "file": "study_schedule.json"
+    },
+    {
+      "id": "usb_auth_login",
+      "file": "usb_auth_login.json"
+    },
+    {
+      "id": "volume_detector",
+      "file": "volume_detector.json"
+    },
+    {
+      "id": "volume_report_viewer",
+      "file": "volume_report_viewer.json"
     }
   ]
 }

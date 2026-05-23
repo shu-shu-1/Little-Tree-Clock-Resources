@@ -1,0 +1,24 @@
+{
+  "id": "document_viewer",
+  "name": "文档浏览",
+  "name_i18n": {
+    "zh-CN": "文档浏览",
+    "en-US": "Document Viewer"
+  },
+  "description": "在画布中浏览 Word/Markdown/TXT/PDF，支持自动滚动与缩放。",
+  "description_i18n": {
+    "zh-CN": "在画布中浏览 Word/Markdown/TXT/PDF，支持自动滚动与缩放。",
+    "en-US": "Browse Word/Markdown/TXT/PDF documents on canvas, with auto-scroll and zoom support."
+  },
+  "version": "1.0.1",
+  "author": "Little Tree Clock",
+  "icon": "https://zsxiaoshu.cn/images/clock-icon.png",
+  "download_url": "https://fastly.jsdelivr.net/gh/shu-shu-1/Little-Tree-Clock@master/plugins_ext/document_viewer-1.0.1.ltcplugin",
+  "homepage": "https://clock.zsxiaoshu.cn/",
+  "tags": ["document", "reader"],
+  "plugin_type": "feature",
+  "permissions": ["fs_read", "install_pkg"],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "1.0.0",
+  "updated_at": "2026-05-23"
+}

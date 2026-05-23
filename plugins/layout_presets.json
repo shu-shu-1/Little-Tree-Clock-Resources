@@ -1,0 +1,24 @@
+{
+  "id": "layout_presets",
+  "name": "布局预设",
+  "name_i18n": {
+    "zh-CN": "布局预设",
+    "en-US": "Layout Presets"
+  },
+  "description": "跨插件共享全屏画布布局预设，支持保存、切换和复用。",
+  "description_i18n": {
+    "zh-CN": "跨插件共享全屏画布布局预设，支持保存、切换和复用。",
+    "en-US": "Share fullscreen canvas layout presets across plugins, with save, switch, and reuse support."
+  },
+  "version": "1.0.0",
+  "author": "Little Tree Clock",
+  "icon": "https://zsxiaoshu.cn/images/clock-icon.png",
+  "download_url": "https://fastly.jsdelivr.net/gh/shu-shu-1/Little-Tree-Clock@master/plugins_ext/layout_presets-1.0.0.ltcplugin",
+  "homepage": "https://clock.zsxiaoshu.cn/",
+  "tags": ["layout", "canvas"],
+  "plugin_type": "feature",
+  "permissions": [],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "1.0.0",
+  "updated_at": "2026-05-23"
+}

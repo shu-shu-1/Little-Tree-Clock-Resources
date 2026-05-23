@@ -1,0 +1,24 @@
+{
+  "id": "study_schedule",
+  "name": "自习时间安排",
+  "name_i18n": {
+    "zh-CN": "自习时间安排",
+    "en-US": "Study Schedule"
+  },
+  "description": "按事项组和时间段管理自习安排，可复用共享布局预设，并按每个生效时间段独立生成音量报告。",
+  "description_i18n": {
+    "zh-CN": "按事项组和时间段管理自习安排，可复用共享布局预设，并按每个生效时间段独立生成音量报告。",
+    "en-US": "Manage study sessions by task groups and time periods, reuse shared layout presets, and generate volume reports per period."
+  },
+  "version": "1.8.0",
+  "author": "Little Tree Clock",
+  "icon": "https://zsxiaoshu.cn/images/clock-icon.png",
+  "download_url": "https://fastly.jsdelivr.net/gh/shu-shu-1/Little-Tree-Clock@master/plugins_ext/study_schedule-1.8.0.ltcplugin",
+  "homepage": "https://clock.zsxiaoshu.cn/",
+  "tags": ["education", "schedule"],
+  "plugin_type": "feature",
+  "permissions": [],
+  "supported_os": ["windows", "macos", "linux"],
+  "min_host_version": "1.0.0",
+  "updated_at": "2026-05-23"
+}
