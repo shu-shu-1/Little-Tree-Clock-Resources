@@ -1,9 +1,9 @@
 {
   "channel": "dev",
-  "version": "1.0.0",
-  "release_date": "2026-03-07",
-  "download_url": "https://pan.tenire.com/down.php/aa27d3a7ed850f8f28aca62c32fecdeb.exehttps://pan.tenire.com/down.php/aa27d3a7ed850f8f28aca62c32fecdeb.exe",
-  "changelog": "## 开发中功能\n\n- 正在开发新功能模块\n- 实验性特性测试\n\n## 警告\n\n- 此为开发版本，仅供开发者测试\n- 可能存在严重 Bug\n- 不建议普通用户使用",
-  "min_version": "0.1.0",
-  "mandatory": false
+  "version": "1.0.1",
+  "release_date": "2026-05-24",
+  "download_url": "https://gh-proxy.com/https://github.com/shu-shu-1/Little-Tree-Clock/releases/download/v1.0.1/LittleTreeClock-1.0.1.zip",
+  "changelog": "## 修复\n\n- 修复初次启动设置问候语在深色模式下的显示问题\n\n- 修复12:00-14:00期间无法启动程序\n\n- 修复了未注册URL Scheme 也能复制全屏链接、添加桌面快捷方式",
+  "min_version": "1.0.0",
+  "mandatory": true
 }
